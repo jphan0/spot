@@ -9,13 +9,13 @@
     </head>
     <body class="antialiased">  
         <section class="mt-24">
-            <div class="max-w-3xl px-6 pt-16 mx-auto text-center">
+            <div class="max-w-3xl px-6 pt-4 md:pt-16 mx-auto text-center">
                 <div class="flex flex-wrap justify-center">
                     <div class="w-6/12 sm:w-4/12 px-4 mb-8">
                         <img src="/img/spot.png" alt="spot logo" class="max-w-full h-auto align-middle border-none" />
                     </div>
                 </div>
-                <h1 class="text-8xl sm:text-xl font-semibold text-gray-800 dark:text-gray-100 font-gastromond">Spot Search</h1>
+                <h1 class="text-5xl md:text-8xl font-semibold text-gray-800 dark:text-gray-100 font-gastromond">Spot Search</h1>
                 <p class="max-w-md mx-auto mt-8 text-gray-500 dark:text-gray-400">Search for songs available through Spotify!</p>
                 <form method="POST" action="/">
                     @csrf
