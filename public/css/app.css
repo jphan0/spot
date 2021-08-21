@@ -31886,12 +31886,12 @@ video {
   font-style: normal;
 }
 
-body.light-bg {
+body {
   background: url(/img/whitepaper-bg.png);
 }
 
 body.dark-bg {
-  background: url(/img/y-so-serious.png);
+  background: url(/img/y-so-serious.png) !important;
 }
 
 @media (min-width: 640px) {

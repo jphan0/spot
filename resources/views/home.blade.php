@@ -7,7 +7,7 @@
         <script src="//unpkg.com/alpinejs" defer></script>
         <title>Spot Search</title>
     </head>
-    <body class="antialiased light-bg dark:dark-bg">  
+    <body class="antialiased dark:dark-bg">  
         <section class="mt-8 md:mt-20">
             <div class="max-w-3xl px-6 pt-4 md:pt-16 mx-auto text-center">
                 <div class="flex flex-wrap justify-center">
