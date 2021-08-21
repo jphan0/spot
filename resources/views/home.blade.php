@@ -15,8 +15,8 @@
                         <img src="/img/spot.png" alt="spot logo" class="max-w-full h-auto align-middle border-none" />
                     </div>
                 </div>
-                <h1 class="text-8xl font-semibold text-gray-800 dark:text-gray-100 font-gastromond">Spot Search</h1>
-                <p class="max-w-md mx-auto mt-8 text-gray-500 dark:text-gray-400">Type in the name of the song you would like to search</p>
+                <h1 class="text-8xl sm:text-xl font-semibold text-gray-800 dark:text-gray-100 font-gastromond">Spot Search</h1>
+                <p class="max-w-md mx-auto mt-8 text-gray-500 dark:text-gray-400">Search for songs available through Spotify!</p>
                 <form method="POST" action="/">
                     @csrf
                     <div class="flex flex-col my-8 space-y-3 sm:space-y-0 sm:flex-row sm:justify-center sm:-mx-2">
@@ -32,7 +32,11 @@
         </section>
         @if(!empty($tracks))
         <div class="max-w-3xl px-6 pt-6 mx-auto text-center">
-            <p class="max-w-md mx-auto text-gray-500 dark:text-gray-400">Showing results for "<u>{{ $query }}</u>"</p>
+            <p class="max-w-md mx-auto text-gray-500 dark:text-gray-400">Showing results for "<u>{{ $query }}</u>"</p><br>
+            {{-- <a class="px-4 py-2 text-sm font-medium leading-5 text-gray-400 transition-colors duration-150 bg-gray-200 border border-transparent rounded-lg active:bg-gray-200 hover:bg-gray-300 focus:outline-none focus:shadow-outline-gray inline-flex items-center disabled" href="{{ route('home') }}">
+                <svg class="mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span>Clear</span>
+            </a> --}}
         </div>
         <div class="flex items-center justify-center mt-8 mb-32">
             <div class="grid gap-8 mt-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
