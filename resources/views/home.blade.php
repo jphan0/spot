@@ -68,23 +68,17 @@
                                                 <path d="M55.5039 40.3359L37.1094 28.0729C35.7803 27.1869 34 28.1396 34 29.737V54.263C34 55.8604 35.7803 56.8131 37.1094 55.9271L55.5038 43.6641C56.6913 42.8725 56.6913 41.1275 55.5039 40.3359Z"></path>
                                             </svg>
                                         </div>
+                                        <div @click="play = !true" x-show="play" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-90" class="absolute inset-0 w-full h-full flex items-center justify-center">
+                                            <svg class="h-20 w-20 text-purple-600" fill="currentColor" viewBox="0 0 84 84">
+                                                <circle opacity="0.8" cx="42" cy="42" r="42" fill="white"></circle>
+                                                <path d="M 38 28 C 38 22 29 22 29 28 V 53 C 29 59 38 59 38 53 Z M 55 28 C 55 22 46 22 46 28 V 53 C 46 59 55 59 55 53 Z"></path>
+                                            </svg>
+                                        </div>
                                         @endif
-                                        <img @click="play = !true" class="object-cover w-full mt-2" src="{{ $album['url'] }}" alt="{{ $item['album']['name'] }}">
+                                        <img class="object-cover w-full mt-2" src="{{ $album['url'] }}" alt="{{ $item['album']['name'] }}">
                                     </div>
                                     @endif 
                                 @endforeach 
-
-                                {{-- <div class="flex items-center justify-between px-4 py-2 bg-gray-900">
-                                    <h1 class="text-lg font-bold text-white"></h1>
-                                    @if(!empty($item['preview_url']))
-                                    <a class="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-200 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none inline-flex items-center" target="_blank" href="{{ $item['preview_url'] }}">
-                                        <svg class="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
-                                        <span>Preview Song</span>
-                                    </a>
-                                    @else
-                                    <a class="px-2 py-1 text-xs font-semibold text-gray-900 uppercase duration-200 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 leading-5 text-white transition-colors duration-150  border border-transparent rounded-lg opacity-50 cursor-not-allowed focus:outline-none">No preview available</a>
-                                    @endif
-                                </div> --}}
                             </div>
                         @endforeach
                     @endif
