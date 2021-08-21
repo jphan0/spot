@@ -29,10 +29,11 @@ class SpotController extends Controller
         // foreach ($tracks as $track) {
         //     if(!empty($track['items'])){
         //         foreach ($track['items'] as $item) {
-        //             // dd($item);
+        //             dd($item);
         //             if(!empty($item['album'])){
         //                 foreach ($item['album']['images'] as $album) {
-        //                     dd($album['url']);
+        //                     // dd($album['url']);
+        //                     dd($album);
         //                 }
         //             }
         //         }

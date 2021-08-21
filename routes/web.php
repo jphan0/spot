@@ -13,9 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('home');
-// });
-
 Route::get('/', [App\Http\Controllers\SpotController::class, 'index'])->name('home');
 Route::post('/search', [App\Http\Controllers\SpotController::class, 'search']);
