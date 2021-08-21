@@ -2,3 +2,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'gastromond';
+    src: url('/fonts/gastromond-webfont.woff2') format('woff2'),
+         url('/fonts/gastromond-webfont.woff') format('woff');
+    font-display: swap;
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    background: url(/img/whitepaper-bg.png);
+}

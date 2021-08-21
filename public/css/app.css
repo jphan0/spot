@@ -22345,6 +22345,10 @@ video {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+.font-gastromond {
+  font-family: "gastromond";
+}
+
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
@@ -31867,6 +31871,23 @@ video {
 
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@font-face {
+  font-family: 'gastromond';
+
+  src: url('/fonts/gastromond-webfont.woff2') format('woff2'),
+         url('/fonts/gastromond-webfont.woff') format('woff');
+
+  font-display: swap;
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+html {
+  background: url(/img/whitepaper-bg.png);
 }
 
 @media (min-width: 640px) {
@@ -53582,6 +53603,10 @@ video {
 
   .sm\:font-mono {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .sm\:font-gastromond {
+    font-family: "gastromond";
   }
 
   .sm\:text-xs {
@@ -84811,6 +84836,10 @@ video {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
+  .md\:font-gastromond {
+    font-family: "gastromond";
+  }
+
   .md\:text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
@@ -116036,6 +116065,10 @@ video {
 
   .lg\:font-mono {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .lg\:font-gastromond {
+    font-family: "gastromond";
   }
 
   .lg\:text-xs {
@@ -147265,6 +147298,10 @@ video {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
+  .xl\:font-gastromond {
+    font-family: "gastromond";
+  }
+
   .xl\:text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
@@ -178490,6 +178527,10 @@ video {
 
   .\32xl\:font-mono {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .\32xl\:font-gastromond {
+    font-family: "gastromond";
   }
 
   .\32xl\:text-xs {

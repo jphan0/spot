@@ -1,6 +1,6 @@
 # Spot
 
-The purpose of this project is to tinker around with the Spotify API as well as the Alpine.js framework with the ultimate goal of replacing the use of jQuery with the latter.
+The purpose of this project is to tinker around with the Spotify API as well as the Alpine.js framework with the main intention of replacing the use of jQuery with the Alpine.js.
 
 ## Requirements
 

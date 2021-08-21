@@ -38,7 +38,7 @@ class SpotController extends Controller
         //         }
         //     }
         // }
-        return view('results', compact('tracks'));
+        return view('home', compact('tracks', 'query'));
         // return view('results')
         //     ->with('song_name', $song_name);
     }
