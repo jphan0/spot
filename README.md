@@ -15,7 +15,7 @@ The purpose of this project is to tinker around with the Spotify API as well as 
 git clone https://github.com/jphan0/spot.git
 
 # cd into your project directory
-cd alpaca
+cd spot
 
 #install composer and npm packages
 composer install
