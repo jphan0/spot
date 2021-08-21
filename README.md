@@ -1,6 +1,6 @@
 # Spot
 
-The purpose of this project is to tinker around with the Spotify API as well as the Alpine.js framework with the main intention of replacing the use of jQuery with the Alpine.js.
+The purpose of this project is to tinker around with the Spotify API as well as the Alpine.js framework with the main intention of replacing the use of jQuery with the Alpine.js. Featured in this project is Laravel-Spotify, a Spotify Web API wrapper for Laravel which provides straight forward methods for each endpoint and a fluent interface for optional parameters.
 
 ## Requirements
 

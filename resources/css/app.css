@@ -12,6 +12,10 @@
     font-style: normal;
 }
 
-html {
+body.light-bg {
     background: url(/img/whitepaper-bg.png);
+}
+
+body.dark-bg {
+    background: url(/img/y-so-serious.png);
 }
