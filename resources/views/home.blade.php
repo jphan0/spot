@@ -8,10 +8,10 @@
         <title>Spot Search</title>
     </head>
     <body class="antialiased">  
-        <section class="mt-24">
+        <section class="mt-8 md:mt-20">
             <div class="max-w-3xl px-6 pt-4 md:pt-16 mx-auto text-center">
                 <div class="flex flex-wrap justify-center">
-                    <div class="w-6/12 sm:w-4/12 px-4 mb-8">
+                    <div class="w-4/12 px-4 mb-8">
                         <img src="/img/spot.png" alt="spot logo" class="max-w-full h-auto align-middle border-none" />
                     </div>
                 </div>
