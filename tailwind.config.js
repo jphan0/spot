@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         'gastromond': ['"gastromond"'],
-      }
+      },
     },
   },
   variants: {

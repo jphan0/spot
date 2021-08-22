@@ -1,6 +1,8 @@
 # Spot
 
-The purpose of this project is to tinker around with the Spotify API as well as the Alpine.js framework with the main intention of replacing the use of jQuery with the Alpine.js. Featured in this project is Laravel-Spotify, a Spotify Web API wrapper for Laravel which provides straight forward methods for each endpoint and a fluent interface for optional parameters.
+The purpose of this project is exploitation of the Spotify API as well as to avoid the use of jQuery by replacing it with Alpine.js. Featured in this project is the Laravel-Spotify package, a Spotify Web API wrapper for Laravel which provides straight forward methods for each endpoint and a fluent interface for optional parameters. Song previews are also available for select tracks available upon search.
+
+![Screenshot of Spot](https://github.com/jphan0/spot/blob/main/ss.png)
 
 ## Requirements
 
