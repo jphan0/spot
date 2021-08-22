@@ -1,6 +1,6 @@
 # Spot
 
-The purpose of this project is exploitation of the Spotify API as well as to avoid the use of jQuery by replacing it with Alpine.js. Featured in this project is the Laravel-Spotify package, a Spotify Web API wrapper for Laravel which provides straight forward methods for each endpoint and a fluent interface for optional parameters. Song previews are also available for select tracks available upon search.
+This project tends to investigate the Spotify API as well as the lightweight Alpine.js framework. Featured in this project is the Laravel-Spotify package, a Spotify Web API wrapper for Laravel which provides straight forward methods for each endpoint and a fluent interface for optional parameters. Song previews are also available for select tracks which are available upon search.
 
 ![Screenshot of Spot](https://github.com/jphan0/spot/blob/main/ss.png)
 
@@ -34,5 +34,7 @@ php artisan serve
 ### Project made possible thanks to:
 
 - [Alpine.js](https://alpinejs.dev/)
-- [Laravel](https://laravel.com/docs/8.x)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [Laravel](https://laravel.com/docs/8.x)
+- [Laravel-Spotify](https://github.com/aerni/laravel-spotify)
+
