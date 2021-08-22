@@ -2,6 +2,8 @@
 
 This project tends to investigate the Spotify API as well as the lightweight Alpine.js framework. Featured in this project is the Laravel-Spotify package, a Spotify Web API wrapper for Laravel which provides straight forward methods for each endpoint and a fluent interface for optional parameters. Song previews are also available for select tracks which are available upon search.
 
+You can see it in action [here](https://spot.jphan.info/)
+
 ![Screenshot of Spot](https://github.com/jphan0/spot/blob/main/ss.png)
 
 ## Requirements
