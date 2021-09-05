@@ -24,7 +24,7 @@
                 <form method="POST" action="/">
                     @csrf
                     <div class="flex flex-col my-8 space-y-3 sm:space-y-0 sm:flex-row sm:justify-center sm:-mx-2">
-                        <input id="song_name" name="song_name" type="text" class="px-4 py-2 text-sm text-gray-700 bg-white border border-gray-300 rounded-md sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-purple-500 dark:focus:border-purple-500 focus:outline-none focus:ring" placeholder="Name of song" required>
+                        <input id="song_name" name="song_name" type="text" class="px-4 py-2 text-sm text-gray-700 bg-white border border-gray-300 rounded-md sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-purple-500 dark:focus:border-purple-500 focus:outline-none focus:ring" placeholder="Name of song" value="{{ request('song_name') }}" required>
                         <button class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple inline-flex items-center disabled" >
                             <svg class="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                             <span>Search</span>
@@ -75,7 +75,7 @@
                                         <div @click="play = !true" x-show="play" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-90" class="absolute inset-0 w-full h-full flex items-center justify-center">
                                             <svg class="h-20 w-20 text-purple-600" fill="currentColor" viewBox="0 0 84 84">
                                                 <circle opacity="0.8" cx="42" cy="42" r="42" fill="white"></circle>
-                                                <path d="M 38 28 C 38 22 29 22 29 28 V 53 C 29 59 38 59 38 53 Z M 55 28 C 55 22 46 22 46 28 V 53 C 46 59 55 59 55 53 Z"></path>
+                                                <path d="M 37 32 C 37 25 28 25 28 32 V 52 C 28 58 37 58 37 52 Z M 54 32 C 54 25 45 25 45 32 V 52 C 45 58 54 58 54 52 Z"></path>
                                             </svg>
                                         </div>
                                         @endif
