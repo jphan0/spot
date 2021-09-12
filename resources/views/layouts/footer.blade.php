@@ -2,7 +2,7 @@
     <div class="container px-6 py-8 mx-auto">
         <hr class="my-10 dark:border-gray-500">
         <div class="sm:flex sm:items-center sm:justify-between">
-            <p class="text-md text-gray-500 dark:text-gray-400 font-optima">Made by <a href="https://jphan.info">James Phan</a> &copy; 2021 </p>
+            <p class="text-md text-gray-500 dark:text-gray-400 font-itc-garamond text-lg">Made by <a href="https://jphan.info">James Phan</a> &copy; 2021 </p>
 
             <div class="flex mt-3 -mx-2 sm:mt-0">
                 <a href="https://jphan.info/" class="mx-2 text-gray-500 hover:text-gray-600 dark:hover:text-gray-300" aria-label="Github">

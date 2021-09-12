@@ -11,11 +11,11 @@ You can see it in action [here](https://spot.jphan.info/)
 - [x] Re-style to provide more of an offline/90s vibe
 - [x] Implement YouTube API and add download song option
 - [x] Add in Spotify playlist search
-- [ ] Add in scheduled task to remove temporary files every X minutes
+- [x] Implement YouTube playlist download
+- [x] Reduce number of YouTube API calls
+- [ ] Add Queues to prevent timeout on playlist download
 - [ ] Add animation to show download in progress
-- [ ] Implement YouTube playlist download
-- [ ] Reduce number of YouTube API calls
-
+- [ ] Add in scheduled task to remove temporary files every X minutes
 
 ## Requirements
 

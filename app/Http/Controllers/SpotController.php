@@ -39,7 +39,12 @@ class SpotController extends Controller
     }
     public function download_song($search_key)
     {
-        $results = Youtube::searchVideos($search_key);
+        $params = [
+            'q'             => $search_key,
+            'type'          => 'video',
+            'maxResults'    => 1
+        ];
+        $results = Youtube::searchAdvanced($params);
         $video_id = $results[0]->id->videoId;
         $url = 'www.youtube.com/watch?v='.$video_id;
 
@@ -95,9 +100,13 @@ class SpotController extends Controller
         $video_urls = array();
         $playlist = Spotify::playlist($link)->get();
         foreach ($playlist['tracks']['items'] as $track){
-            $video_id = Youtube::searchVideos($track['track']['name'].' '.$track['track']['artists'][0]['name'])[0]->id->videoId;
-            $video_url = 'www.youtube.com/watch?v='.$video_id;
-            $video_urls[] = $video_url;
+            // $video_id = Youtube::searchVideos($track['track']['name'].' '.$track['track']['artists'][0]['name'])[0]->id->videoId;
+            $search_key = $track['track']['name'].' '.$track['track']['artists'][0]['name'];
+            // ddd($search_key);
+            $spot_controller = new SpotController;
+            $spot_controller->download_song($search_key);
+            // $video_url = 'www.youtube.com/watch?v='.$video_id;
+            // $video_urls[] = $video_url;
         }
         ddd($video_urls);
         return view('playlist', compact('playlist'));
