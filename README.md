@@ -6,6 +6,17 @@ You can see it in action [here](https://spot.jphan.info/)
 
 ![Screenshot of Spot](https://github.com/jphan0/spot/blob/main/ss.png)
 
+## To do
+
+- [x] Re-style to provide more of an offline/90s vibe
+- [x] Implement YouTube API and add download song option
+- [x] Add in Spotify playlist search
+- [ ] Add in scheduled task to remove temporary files every X minutes
+- [ ] Add animation to show download in progress
+- [ ] Implement YouTube playlist download
+- [ ] Reduce number of YouTube API calls
+
+
 ## Requirements
 
 - Laravel installer

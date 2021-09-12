@@ -37,56 +37,11 @@ class SpotController extends Controller
         $tracks = Spotify::searchTracks($query)->limit(12)->get();
         return view('song', compact('tracks', 'query'));
     }
-    public function playlist_home()
-    {
-        return view('playlist');
-    }
-    public function playlist_search(Request $request)
-    {
-        // Provide some validation
-        $this->validate(request(), [
-            'playlist' => 'required|url',
-        ]);
-        $query = $request->input('playlist');
-        // https://open.spotify.com/playlist/7Gk43hVIlI8sfl4TptWgkq?si=973995e2a8974cf0
-        // Get 7Gk43hVIlI8sfl4TptWgkq
-        $segment = explode('/' ,$query);
-        $url = explode('?' ,$segment[4]);
-        $playlistId = $url[0];
-        $playlist = Spotify::playlist($playlistId)->get();
-        // ddd($playlist);
-        $countTracks = count($playlist['tracks']['items']);
-        // foreach ($playlist['tracks']['items'] as $track){
-        //     $video_id = Youtube::searchVideos($track['track']['name'].' '.$track['track']['artists'][0]['name'])[0]->id->videoId;
-        //     $video_url = 'www.youtube.com/watch?v='.$video_id;
-        //     $video_urls[] = $video_url;
-        // }
-        // ddd($video_urls);
-        // ddd($playlist['tracks']['items'][0]['track']['artists']);
-        // ddd($playlist['tracks']['items'][0]['track']['album']['images']);
-        return view('playlist', compact('playlist', 'countTracks', 'playlistId', 'query'));
-    }
-
-    public function playlist_download($link)
-    {
-        $video_urls = array();
-        $playlist = Spotify::playlist($link)->get();
-        foreach ($playlist['tracks']['items'] as $track){
-            $video_id = Youtube::searchVideos($track['track']['name'].' '.$track['track']['artists'][0]['name'])[0]->id->videoId;
-            $video_url = 'www.youtube.com/watch?v='.$video_id;
-            $video_urls[] = $video_url;
-        }
-        ddd($video_urls);
-        return view('playlist', compact('playlist'));
-    }
-
     public function download_song($search_key)
     {
-        // ddd($search_key);
         $results = Youtube::searchVideos($search_key);
         $video_id = $results[0]->id->videoId;
         $url = 'www.youtube.com/watch?v='.$video_id;
-        // $url = 'https://www.youtube.com/watch?v=nvUTNX0FDPA';
 
         try {
             $process = new Process([
@@ -114,27 +69,37 @@ class SpotController extends Controller
             return back();
         }
     }
+    public function playlist_home()
+    {
+        return view('playlist');
+    }
+    public function playlist_search(Request $request)
+    {
+        // Provide some validation
+        $this->validate(request(), [
+            'playlist' => 'required|url',
+        ]);
+        $query = $request->input('playlist');
+        // https://open.spotify.com/playlist/7Gk43hVIlI8sfl4TptWgkq?si=973995e2a8974cf0
+        // Get 7Gk43hVIlI8sfl4TptWgkq
+        $segment = explode('/' ,$query);
+        $url = explode('?' ,$segment[4]);
+        $playlistId = $url[0];
+        $playlist = Spotify::playlist($playlistId)->get();
+        $countTracks = count($playlist['tracks']['items']);
+        return view('playlist', compact('playlist', 'countTracks', 'playlistId', 'query'));
+    }
 
-    // Roadmap
-
-    // Update spotify search to contain album, artist, playlist and track
-        // Spotify::searchItems('query', 'album, artist, playlist, track')->get();
-    // Click on album name to show album details
-        // Spotify::album('album_id')->get();
-        // Spotify::albumTracks('album_id')->get();
-        // Show data in a table
-        // Download individual songs
-            // Integrate youtube api
-            // Search youtube for the track in question using the track and artist name 
-            // Grab the first result url
-            // Call prepare controller function
-        // Download entire album
-            // Implement the same but for the above
-
-    // Search for spotify playlist by name or url
-        // Spotify::searchPlaylists('query')->get();
-    // Show table of playlists from result
-    // Show selected playlist songs in a table
-    // Download song individually
-    // Download entire playlist
+    public function playlist_download($link)
+    {
+        $video_urls = array();
+        $playlist = Spotify::playlist($link)->get();
+        foreach ($playlist['tracks']['items'] as $track){
+            $video_id = Youtube::searchVideos($track['track']['name'].' '.$track['track']['artists'][0]['name'])[0]->id->videoId;
+            $video_url = 'www.youtube.com/watch?v='.$video_id;
+            $video_urls[] = $video_url;
+        }
+        ddd($video_urls);
+        return view('playlist', compact('playlist'));
+    }
 }

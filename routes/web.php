@@ -21,6 +21,3 @@ Route::get('/song/{search_key}', [App\Http\Controllers\SpotController::class, 'd
 Route::get('/playlist', [App\Http\Controllers\SpotController::class, 'playlist_home'])->name('playlists');
 Route::post('/playlist', [App\Http\Controllers\SpotController::class, 'playlist_search']);
 Route::get('/playlist/{link}', [App\Http\Controllers\SpotController::class, 'playlist_download']);
-
-Route::get('/status/{video}', [App\Http\Controllers\SpotController::class, 'status'], 'status')->name('status');
-Route::get('/download/{video}', [App\Http\Controllers\SpotController::class, 'download'], 'download')->name('download');
