@@ -11,3 +11,25 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'itc-garamond';
+    src: url('/fonts/ITCGaramondStd-LtNarrow.woff2') format('woff2'),
+         url('/fonts/ITCGaramondStd-LtNarrow.woff') format('woff');
+    font-display: swap;
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'optima';
+    src: url('/fonts/Optima.woff2') format('woff2'),
+         url('/fonts/Optima.woff') format('woff');
+    font-display: swap;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.cyan-ease {
+    background: linear-gradient(180deg,rgba(57,170,167,.5) -131.42%,rgba(57,170,167,.5) 1.85%,rgba(57,170,167,0) 99.94%);
+}

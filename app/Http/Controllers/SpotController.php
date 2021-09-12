@@ -19,7 +19,15 @@ class SpotController extends Controller
     {
         return view('home');
     }
-    public function search(Request $request)
+    public function about()
+    {
+        return view('about');
+    }
+    public function song_home()
+    {
+        return view('song');
+    }
+    public function song_search(Request $request)
     {
         // Provide some validation
         $this->validate(request(), [
@@ -27,23 +35,7 @@ class SpotController extends Controller
         ]);
         $query = $request->input('song_name');
         $tracks = Spotify::searchTracks($query)->limit(12)->get();
-        // dd($tracks);
-        // foreach ($tracks as $track) {
-        //     if(!empty($track['items'])){
-        //         foreach ($track['items'] as $item) {
-        //             dd($item);
-        //             if(!empty($item['album'])){
-        //                 foreach ($item['album']['images'] as $album) {
-        //                     // dd($album['url']);
-        //                     dd($album);
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
-        return view('home', compact('tracks', 'query'));
-        // return view('results')
-        //     ->with('song_name', $song_name);
+        return view('song', compact('tracks', 'query'));
     }
     public function playlist_home()
     {
@@ -53,15 +45,15 @@ class SpotController extends Controller
     {
         // Provide some validation
         $this->validate(request(), [
-            'playlist' => 'required',
+            'playlist' => 'required|url',
         ]);
-        $video_urls = array();
         $query = $request->input('playlist');
         // https://open.spotify.com/playlist/7Gk43hVIlI8sfl4TptWgkq?si=973995e2a8974cf0
         // Get 7Gk43hVIlI8sfl4TptWgkq
         $segment = explode('/' ,$query);
         $url = explode('?' ,$segment[4]);
-        $playlist = Spotify::playlist($url[0])->get();
+        $playlistId = $url[0];
+        $playlist = Spotify::playlist($playlistId)->get();
         // ddd($playlist);
         $countTracks = count($playlist['tracks']['items']);
         // foreach ($playlist['tracks']['items'] as $track){
@@ -72,25 +64,35 @@ class SpotController extends Controller
         // ddd($video_urls);
         // ddd($playlist['tracks']['items'][0]['track']['artists']);
         // ddd($playlist['tracks']['items'][0]['track']['album']['images']);
-        return view('playlist', compact('playlist', 'countTracks', 'query'));
+        return view('playlist', compact('playlist', 'countTracks', 'playlistId', 'query'));
     }
 
-    public function download_search()
+    public function playlist_download($link)
     {
-        return view('download');
+        $video_urls = array();
+        $playlist = Spotify::playlist($link)->get();
+        foreach ($playlist['tracks']['items'] as $track){
+            $video_id = Youtube::searchVideos($track['track']['name'].' '.$track['track']['artists'][0]['name'])[0]->id->videoId;
+            $video_url = 'www.youtube.com/watch?v='.$video_id;
+            $video_urls[] = $video_url;
+        }
+        ddd($video_urls);
+        return view('playlist', compact('playlist'));
     }
 
-    public function prepare(Request $request)
+    public function download_song($search_key)
     {
-        $this->validate($request, [
-           'url' => 'required'
-        ]);
+        // ddd($search_key);
+        $results = Youtube::searchVideos($search_key);
+        $video_id = $results[0]->id->videoId;
+        $url = 'www.youtube.com/watch?v='.$video_id;
+        // $url = 'https://www.youtube.com/watch?v=nvUTNX0FDPA';
 
         try {
             $process = new Process([
                 'youtube-dl',
                 '-f140',
-                $request->url,
+                $url,
                 '-o',
                 storage_path('app/public/downloads/%(title)s.%(ext)s')
                 , '--print-json'

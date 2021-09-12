@@ -25,8 +25,11 @@ cd spot
 composer install
 npm install && npm run dev
 
-# Start prepare the environment:
-There are no database requirements for this project
+# Prepare the environment:
+Add your Spotify and YouTube API keys to your env file
+SPOTIFY_CLIENT_ID=
+SPOTIFY_CLIENT_SECRET=
+YOUTUBE_API_KEY= 
 
 # Run your server
 php artisan serve
