@@ -14,8 +14,8 @@ You can see it in action [here](https://spot.jphan.info/)
 - [x] Reduce number of YouTube API calls
 - [x] Add Queues to prevent timeout on playlist download
 - [x] ~~Add animation to show download in progress~~ Use livewire to update content dynamically
-- [ ] Add in scheduled task to remove temporary files every X minutes
-- [ ] Implement YouTube playlist download
+- [x] Add in scheduled task to remove temporary files every X minutes
+- [ ] Implement Spotify playlist download
 
 ## Requirements
 

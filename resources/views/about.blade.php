@@ -1,12 +1,14 @@
 @extends('layouts.app')
 @section('content')
-    <section class="pt-16 md:pt-48">
+    <section class="pt-16 md:pt-48 cyan-ease">
         <div class="max-w-3xl px-6 pt-4 md:pt-16 mx-auto text-center">
             <a href="/">
                 <h1 class="text-5xl md:text-9xl font-light text-offblack dark:text-gray-100 font-itc-garamond">About</h1>
             </a>
             {{-- <p class="max-w-full mx-auto mt-8 text-offblack dark:text-gray-400 text-xl font-optima">Getting ready for a vacation?<br/> Search for songs and playlists available on Spotify and take them offline!</p> --}}
         </div>
+    </section>
+    <section>
         <div class="max-w-3xl px-6 pt-4 md:pt-8 mx-auto font-itc-garamond" x-data="{ show: false }">
             <h3 class="py-4 text-4xl">How does it work?</h3>
             <p class="py-4 text-2xl">

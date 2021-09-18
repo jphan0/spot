@@ -12,7 +12,7 @@
         <title>Spot Search</title>
     </head>
     <body class="antialiased font-optima bg-secondary text-offblack">
-        <div class="conent-main cyan-ease">
+        <div class="conent-main">
             @include('layouts.nav')
             @yield('content')
         </div>

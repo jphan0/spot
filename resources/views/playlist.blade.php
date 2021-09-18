@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <section class="pt-16 md:pt-48">
+    <section class="cyan-ease pt-16 md:pt-48">
         <div class="max-w-3xl px-6 pt-4 md:pt-16 mx-auto text-center">
             <a href="/">
                 <h1 class="text-5xl md:text-9xl font-light text-offblack dark:text-gray-100 font-itc-garamond">Vacay Tunes</h1>
@@ -11,7 +11,7 @@
             <form method="POST" action="/playlist">
                 @csrf
                 <div class="flex flex-col my-4 space-y-3 sm:space-y-0 sm:flex-row sm:justify-center sm:-mx-2">
-                    <input id="playlist" name="playlist" type="text" class="w-96 px-6 pt-2 pb-1 text-md text-gray-700 bg-white border border-gray-300 rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-purple-500 dark:focus:border-purple-500 focus:outline-none focus:ring font-optima" placeholder="Playlist URL" value="{{ request('playlist') }}" required>
+                    <input id="playlist" name="playlist" type="text" class="w-96 px-6 pt-2 pb-1 text-md text-gray-700 bg-white border border-gray-300 rounded-full sm:mx-2 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-purple-500 dark:focus:border-purple-500 focus:outline-none focus:ring font-optima" placeholder="Spotify playlist URL" value="{{ request('playlist') }}" required>
                     
                 </div>
                 <button class="px-8 pt-3 pb-2 leading-5 transition-colors duration-150 bg-tertiary border border-transparent rounded-full active:bg-tertiary hover:bg-tertiary focus:outline-none focus:shadow-outline-tertiary font-optima uppercase italic font-extrabold text-xl shadow-hard" href="/song">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use Spotify;
 use Youtube;
 use App\Models\Spot;
@@ -155,10 +156,17 @@ class SpotController extends Controller
     public function download(Song $song)
     {
         abort_if($song->status !== 'completed', 404);
-        $filenameNoSpace = str_replace(' ', '_', $song->info->fulltitle).'.m4a';
-        $filename = str_replace(['[', ']'], '', $filenameNoSpace);
+        $filename = str_replace(' ', '_', $song->filename).'.m4a';
+        // $filename = str_replace(['[', ']'], '', $filenameNoSpace);
         $file = public_path('downloads/'.$filename);
-        // ddd($file);
         return response()->download($file);
+    }
+
+    public function manualDelete()
+    {
+        $directory = public_path('downloads/');
+        // ddd($directory);
+        File::deleteDirectory($directory);
+        return view('home');
     }
 }

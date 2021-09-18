@@ -11,7 +11,7 @@
             </button>
         </p>
         @elseif ($song->status == 'completed')
-        <p class="max-w-full mx-auto mt-8 text-offblack dark:text-gray-400 text-xl font-optima">{{ $song->info->title }} <br/>is ready for download</p>
+        <p class="max-w-full mx-auto mt-8 text-offblack dark:text-gray-400 text-xl font-optima">{{ $song->filename }} <br/>is ready for download</p>
         <p class="max-w-full mx-auto mt-8">
             <a class="px-8 pt-3 pb-2 leading-5 transition-colors duration-150 bg-transparent border-5 border-tertiary rounded-full active:bg-tertiary hover:bg-tertiary focus:outline-none focus:shadow-outline-tertiary font-optima uppercase italic font-extrabold text-xl shadow-hard" href="{{ route('download', ['song' => $song]) }}">
                 Download

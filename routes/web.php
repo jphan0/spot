@@ -22,11 +22,13 @@ Route::get('/playlist', [App\Http\Controllers\SpotController::class, 'playlistHo
 Route::post('/playlist', [App\Http\Controllers\SpotController::class, 'playlistSearch']);
 Route::get('/playlist/{link}', [App\Http\Controllers\SpotController::class, 'playlistDownload']);
 
-Route::get('/queue', function() {
-    dispatch(function() {
-        logger('Running our first job!');
-    });
-});
+// Route::get('/queue', function() {
+//     dispatch(function() {
+//         logger('Running our first job!');
+//     });
+// });
 
 Route::get('status/{song}', [App\Http\Controllers\SpotController::class, 'status'])->name('status');
 Route::get('download/{song}', [App\Http\Controllers\SpotController::class, 'download'])->name('download');
+
+Route::get('vaticancameos', [App\Http\Controllers\SpotController::class, 'manualDelete']);

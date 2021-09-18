@@ -45,7 +45,7 @@ class DownloadSong implements ShouldQueue
             $this->song->url,
             '-o',
             // storage_path('app/public/downloads/%(title)s.%(ext)s')
-            public_path('downloads/%(title)s.%(ext)s')
+            public_path('downloads/'. str_replace(' ', '_', $this->song->filename) .'.%(ext)s')
             , '--print-json'
         ]);
 

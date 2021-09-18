@@ -1575,6 +1575,10 @@ video {
   background: linear-gradient(180deg,rgba(57,170,167,.5) -131.42%,rgba(57,170,167,.5) 1.85%,rgba(57,170,167,0) 99.94%);
 }
 
+.cyan {
+  background-color: #92c8c2;
+}
+
 @media (min-width: 640px) {
   .sm\:mx-2 {
     margin-left: 0.5rem;
