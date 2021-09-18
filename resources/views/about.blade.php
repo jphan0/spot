@@ -10,7 +10,7 @@
         <div class="max-w-3xl px-6 pt-4 md:pt-8 mx-auto font-itc-garamond" x-data="{ show: false }">
             <h3 class="py-4 text-4xl">How does it work?</h3>
             <p class="py-4 text-2xl">
-                This site searches Spotify for your songs and playlists and finds the assosiated YouTube video(s). The audio is then extracted from the video(s) and converted to an M4A file for you to take on the road!
+                This site searches Spotify for your songs and playlists and finds the closest matching YouTube video(s). The audio is then extracted from the video(s) and converted to an M4A file for you to take on the road!
             </p>
             <h3 class="py-4 text-4xl">Why M4A?</h3>
             <p class="py-4 text-2xl">

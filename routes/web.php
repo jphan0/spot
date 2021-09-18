@@ -15,9 +15,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\SpotController::class, 'index'])->name('home');
 Route::get('/about', [App\Http\Controllers\SpotController::class, 'about'])->name('about');
-Route::get('/song', [App\Http\Controllers\SpotController::class, 'song_home'])->name('songs');
-Route::post('/song', [App\Http\Controllers\SpotController::class, 'song_search']);
-Route::get('/song/{search_key}', [App\Http\Controllers\SpotController::class, 'download_song']);
-Route::get('/playlist', [App\Http\Controllers\SpotController::class, 'playlist_home'])->name('playlists');
-Route::post('/playlist', [App\Http\Controllers\SpotController::class, 'playlist_search']);
-Route::get('/playlist/{link}', [App\Http\Controllers\SpotController::class, 'playlist_download']);
+Route::get('/song', [App\Http\Controllers\SpotController::class, 'songHome'])->name('songs');
+Route::post('/song', [App\Http\Controllers\SpotController::class, 'songSearch']);
+Route::get('/song/{search_key}', [App\Http\Controllers\SpotController::class, 'downloadSong']);
+Route::get('/playlist', [App\Http\Controllers\SpotController::class, 'playlistHome'])->name('playlists');
+Route::post('/playlist', [App\Http\Controllers\SpotController::class, 'playlistSearch']);
+Route::get('/playlist/{link}', [App\Http\Controllers\SpotController::class, 'playlistDownload']);
+
+Route::get('/queue', function() {
+    dispatch(function() {
+        logger('Running our first job!');
+    });
+});
+
+Route::get('status/{song}', [App\Http\Controllers\SpotController::class, 'status'])->name('status');
+Route::get('download/{song}', [App\Http\Controllers\SpotController::class, 'download'])->name('download');

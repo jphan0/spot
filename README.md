@@ -11,11 +11,11 @@ You can see it in action [here](https://spot.jphan.info/)
 - [x] Re-style to provide more of an offline/90s vibe
 - [x] Implement YouTube API and add download song option
 - [x] Add in Spotify playlist search
-- [x] Implement YouTube playlist download
 - [x] Reduce number of YouTube API calls
-- [ ] Add Queues to prevent timeout on playlist download
-- [ ] Add animation to show download in progress
+- [x] Add Queues to prevent timeout on playlist download
+- [x] ~~Add animation to show download in progress~~ Use livewire to update content dynamically
 - [ ] Add in scheduled task to remove temporary files every X minutes
+- [ ] Implement YouTube playlist download
 
 ## Requirements
 
@@ -37,10 +37,21 @@ composer install
 npm install && npm run dev
 
 # Prepare the environment:
+mysql -u root -p
+create database [DB name]; 
+use [DB name];
+exit
+
+# Add API keys
 Add your Spotify and YouTube API keys to your env file
 SPOTIFY_CLIENT_ID=
 SPOTIFY_CLIENT_SECRET=
 YOUTUBE_API_KEY= 
+
+# Set up queueing
+Update the QUEUE_CONNECTION from 'sync' to 'database' to enable queueing
+php artisan queue:table
+php artisan migrate
 
 # Run your server
 php artisan serve

@@ -1,11 +1,11 @@
 module.exports = {
-  // purge: {
-  //   enabled: false,
-  //   content: ['./resources/**/*.blade.php',
-  //    './resources/**/*.js',
-  //    './resources/**/*.vue',
-  //    ],
-  // },
+  purge: {
+    enabled: true,
+    content: ['./resources/**/*.blade.php',
+     './resources/**/*.js',
+     './resources/**/*.vue',
+     ],
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
@@ -47,7 +47,17 @@ module.exports = {
       inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
       'hard': '2px 2px 2px rgb(0 0 0 / 75%)',
       none: 'none',
-    }
+    },
+    borderWidth: {
+        DEFAULT: '1px',
+        '0': '0',
+        '2': '2px',
+        '3': '3px',
+        '4': '4px',
+        '5': '5px',
+        '6': '6px',
+        '8': '8px',
+      }
   },
   variants: {
     extend: {},

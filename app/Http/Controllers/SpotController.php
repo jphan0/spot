@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Spotify;
 use Youtube;
 use App\Models\Spot;
+use App\Models\Song;
+use App\Jobs\DownloadSong;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Symfony\Component\Process\Process;
 
 class SpotController extends Controller
@@ -23,11 +26,11 @@ class SpotController extends Controller
     {
         return view('about');
     }
-    public function song_home()
+    public function songHome()
     {
         return view('song');
     }
-    public function song_search(Request $request)
+    public function songSearch(Request $request)
     {
         // Provide some validation
         $this->validate(request(), [
@@ -37,7 +40,7 @@ class SpotController extends Controller
         $tracks = Spotify::searchTracks($query)->limit(12)->get();
         return view('song', compact('tracks', 'query'));
     }
-    public function download_song($search_key)
+    public function downloadSong($search_key)
     {
         $params = [
             'q'             => $search_key,
@@ -47,38 +50,52 @@ class SpotController extends Controller
         $results = Youtube::searchAdvanced($params);
         $video_id = $results[0]->id->videoId;
         $url = 'www.youtube.com/watch?v='.$video_id;
+        // $url = 'https://www.youtube.com/watch?v=Af8b0JAznqc';
 
-        try {
-            $process = new Process([
-                'youtube-dl',
-                '-f140',
-                $url,
-                '-o',
-                storage_path('app/public/downloads/%(title)s.%(ext)s')
-                , '--print-json'
-            ]);
+        // ------------------------------
 
-            $process->mustRun();
+        $song = Song::create([
+            'url' => $url,
+            'filename' => $search_key
+        ]);
 
-            $output = json_decode($process->getOutput(), true);
+        DownloadSong::dispatch($song);
 
-            if (json_last_error() !== JSON_ERROR_NONE) {
-                throw new \Exception("Could not download the file!");
-            }
+        return redirect()->route('status', ['song' => $song]);
 
-            return response()->download($output['_filename']);
+        // ------------------------------
 
-        }  catch (\Throwable $exception) {
-            $request->session()->flash('error', 'Could not download the given link!');
-            logger()->critical($exception->getMessage());
-            return back();
-        }
+        // try {
+        //     $process = new Process([
+        //         'youtube-dl',
+        //         '-f140',
+        //         $url,
+        //         '-o',
+        //         storage_path('app/public/downloads/%(title)s.%(ext)s')
+        //         , '--print-json'
+        //     ]);
+
+        //     $process->mustRun();
+
+        //     $output = json_decode($process->getOutput(), true);
+
+        //     if (json_last_error() !== JSON_ERROR_NONE) {
+        //         throw new \Exception("Could not download the file!");
+        //     }
+
+        //     return response()->download($output['_filename']);
+
+        // }  catch (\Throwable $exception) {
+        //     $request->session()->flash('error', 'Could not download the given link!');
+        //     logger()->critical($exception->getMessage());
+        //     return back();
+        // }
     }
-    public function playlist_home()
+    public function playlistHome()
     {
         return view('playlist');
     }
-    public function playlist_search(Request $request)
+    public function playlistSearch(Request $request)
     {
         // Provide some validation
         $this->validate(request(), [
@@ -95,7 +112,7 @@ class SpotController extends Controller
         return view('playlist', compact('playlist', 'countTracks', 'playlistId', 'query'));
     }
 
-    public function playlist_download($link)
+    public function playlistDownload($link)
     {
         $video_urls = array();
         $playlist = Spotify::playlist($link)->get();
@@ -104,11 +121,44 @@ class SpotController extends Controller
             $search_key = $track['track']['name'].' '.$track['track']['artists'][0]['name'];
             // ddd($search_key);
             $spot_controller = new SpotController;
-            $spot_controller->download_song($search_key);
+            $spot_controller->downloadSong($search_key);
             // $video_url = 'www.youtube.com/watch?v='.$video_id;
-            // $video_urls[] = $video_url;
+            // $video_urls[] = $video_url; c
+        }
+        return view('playlist', compact('playlist'));
+    }
+
+    public function playlistList($link)
+    {
+        $video_urls = array();
+        $playlist = Spotify::playlist($link)->get();
+        foreach ($playlist['tracks']['items'] as $track){
+            $params = [
+                'q'             => $track['track']['name'].' '.$track['track']['artists'][0]['name'],
+                'type'          => 'video',
+                'maxResults'    => 1
+            ];
+            $results = Youtube::searchAdvanced($params);
+            $video_id = $results[0]->id->videoId;
+            $video_url = 'www.youtube.com/watch?v='.$video_id;
+            $video_urls[] = $video_url;
         }
         ddd($video_urls);
         return view('playlist', compact('playlist'));
+    }
+
+    public function status(Song $song)
+    {
+        return view('status', ['song' => $song]);
+    }
+
+    public function download(Song $song)
+    {
+        abort_if($song->status !== 'completed', 404);
+        $filenameNoSpace = str_replace(' ', '_', $song->info->fulltitle).'.m4a';
+        $filename = str_replace(['[', ']'], '', $filenameNoSpace);
+        $file = public_path('downloads/'.$filename);
+        // ddd($file);
+        return response()->download($file);
     }
 }

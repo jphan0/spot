@@ -42,7 +42,7 @@
                                     <div class="flex items-center justify-between">
                                         <div>
                                             <h3 class="text-md font-bold text-gray-800 uppercase dark:text-white ">
-                                                {{Str::limit($item['name'], 24, $end='...')}}
+                                                {{Str::limit($item['name'], 22, $end='...')}}
                                             </h3>
                                             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400 truncate">
                                             @foreach ($item['artists'] as $artist)   

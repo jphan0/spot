@@ -35,7 +35,7 @@
                     <!-- content -->
                     <div class="w-full p-8 text-gray-800 flex flex-col justify-between">
                         <h3 class="font-semibold text-2xl leading-tight truncate">{{ $playlist['name']}}</h3>
-                        <p class="mt-2">
+                        <p class="my-6">
                             {!! $playlist['description']!!}
                         </p>
                         <div class="flex items-center justify-between">
@@ -100,7 +100,8 @@
                                     {{ $track['track']['album']['name'] }}
                                 </td>
                                 <td class="px-8 pb-3 pt-5 text-sm">
-                                    {{ $track['track']['duration_ms'] }}ms
+                                    {{ \Carbon\CarbonInterval::milliseconds($track['track']['duration_ms'])->cascade()->forHumans(); }}
+                                    {{-- {{ $track['track']['duration_ms'] }}ms --}}
                                 </td>
                             </tr>
                             @endforeach
