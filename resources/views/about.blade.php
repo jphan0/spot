@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <section class="pt-16 md:pt-48 cyan-ease">
+    <section class="pt-8 md:pt-48 cyan-ease">
         <div class="max-w-3xl px-6 pt-4 md:pt-16 mx-auto text-center">
             <a href="/">
                 <h1 class="text-5xl md:text-9xl font-light text-offblack dark:text-gray-100 font-itc-garamond">About</h1>
