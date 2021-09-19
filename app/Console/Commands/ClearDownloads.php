@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use File;
 use Illuminate\Console\Command;
 
 class ClearDownloads extends Command

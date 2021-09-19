@@ -63,5 +63,7 @@ php artisan serve
 - [Alpine.js](https://alpinejs.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Laravel](https://laravel.com/docs/8.x)
+- [Laravel Livewire](https://laravel-livewire.com/)
 - [Laravel-Spotify](https://github.com/aerni/laravel-spotify)
+- [Youtube](https://github.com/alaouy/Youtube)
 
