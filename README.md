@@ -1,20 +1,22 @@
-# Spot
+# Vacay Tunes
 
-This project tends to investigate the Spotify API as well as the lightweight Alpine.js framework. Featured in this project is the Laravel-Spotify package, a Spotify Web API wrapper for Laravel which provides straight forward methods for each endpoint and a fluent interface for optional parameters. Song previews are also available for select tracks which are available upon search.
+Vacay Tunes searches Spotify for your favourite songs and playlists and locates the closest matching YouTube video, it then extracts the audio and provides you with an M4A file to download and take on the road for your next vacay!
 
+This project makes use of both the Spotify and YouTube APIs and tools such as Alpine.js, Tailwind CSS, Laravel Livewire, and youtube-dl.
 You can see it in action [here](https://spot.jphan.info/)
 
 ![Screenshot of Spot](https://github.com/jphan0/spot/blob/main/ss.png)
 
 ## To do
 
-- [x] Re-style to provide more of an offline/90s vibe
+- [x] Implement Spotify API and add song search
+- [x] Add Alpine.js and provide song previews
+- [x] Add playlist search
 - [x] Implement YouTube API and add download song option
-- [x] Add in Spotify playlist search
 - [x] Reduce number of YouTube API calls
-- [x] Add Queues to prevent timeout on playlist download
-- [x] ~~Add animation to show download in progress~~ Use livewire to update content dynamically
-- [x] Add in scheduled task to remove temporary files every X minutes
+- [x] Add Queues to prevent timeout on large files and playlist download
+- [x] Use Livewire to update content dynamically
+- [x] Add in cron/scheduled task to remove temporary files periodically
 - [ ] Implement Spotify playlist download
 
 ## Requirements
@@ -52,6 +54,12 @@ YOUTUBE_API_KEY=
 Update the QUEUE_CONNECTION from 'sync' to 'database' to enable queueing
 php artisan queue:table
 php artisan migrate
+
+# Install youtube-dl
+sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+sudo chmod a+rx /usr/local/bin/youtube-dl
+OR for windows
+sudo -H pip install --upgrade youtube-dl
 
 # Run your server
 php artisan serve
