@@ -27,7 +27,7 @@
             <p class="max-w-md mx-auto font-optima text-lg dark:text-gray-400">Showing results for <u>{{ $query }}</u></p><br>
         </div>
         <div class="flex items-center justify-center">
-            <div class="grid gap-8 px-8 mt-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div class="grid gap-8 mx-2 mt-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 @foreach ($tracks as $track) 
                     @if(!empty($track['items']))
                         @foreach ($track['items'] as $item)
