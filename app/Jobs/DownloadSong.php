@@ -41,6 +41,7 @@ class DownloadSong implements ShouldQueue
         $process = new Process([
             'youtube-dl',
             '-f140',
+            '--embed-thumbnail',
             '--restrict-filenames',
             $this->song->url,
             '-o',

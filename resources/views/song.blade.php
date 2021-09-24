@@ -40,7 +40,7 @@
                             })">
                                 <div class="px-4 pb-2 pt-4">
                                     <div class="flex items-center justify-between">
-                                        <div>
+                                        <div class="flex-auto">
                                             <h3 class="text-md font-bold text-gray-800 uppercase dark:text-white ">
                                                 {{Str::limit($item['name'], 22, $end='...')}}
                                             </h3>
@@ -53,7 +53,7 @@
                                             @endforeach 
                                             </p>
                                         </div>
-                                        <div>
+                                        <div class="flex-initial">
                                             <a class="px-3 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-transparent border border-offblack rounded-lg active:bg-tertiary hover:bg-tertiary hover:border-tertiary hover:text-white focus:outline-none focus:shadow-outline-tertiary inline-flex items-center" href="/song/{{ $item['name'] }} - {{ $item['artists'][0]['name'] }}">
                                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                             </a>
