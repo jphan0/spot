@@ -43,15 +43,27 @@ class SpotController extends Controller
     }
     public function downloadSong($search_key)
     {
-        $params = [
-            'q'             => $search_key,
-            'type'          => 'video',
-            'maxResults'    => 1
-        ];
-        $results = Youtube::searchAdvanced($params);
-        $video_id = $results[0]->id->videoId;
-        $url = 'www.youtube.com/watch?v='.$video_id;
+        // $params = [
+        //     'q'             => $search_key,
+        //     'type'          => 'video',
+        //     'maxResults'    => 1
+        // ];
+        // $results = Youtube::searchAdvanced($params);
+        // $video_id = $results[0]->id->videoId;
+        // $url = 'www.youtube.com/watch?v='.$video_id;
         // $url = 'https://www.youtube.com/watch?v=Af8b0JAznqc';
+        $process = new Process([
+            'python3',
+            public_path('py/search.py'),
+            $search_key,
+        ]);
+        $process->run();
+        
+        $output = json_decode($process->getOutput(), true);
+        $suffix = $output['videos'][0]['url_suffix'];
+        // ddd($suffix);
+
+        $url = 'www.youtube.com'.$suffix;
 
         // ------------------------------
 
@@ -134,15 +146,29 @@ class SpotController extends Controller
         $video_urls = array();
         $playlist = Spotify::playlist($link)->get();
         foreach ($playlist['tracks']['items'] as $track){
-            $params = [
-                'q'             => $track['track']['name'].' '.$track['track']['artists'][0]['name'],
-                'type'          => 'video',
-                'maxResults'    => 1
-            ];
-            $results = Youtube::searchAdvanced($params);
-            $video_id = $results[0]->id->videoId;
-            $video_url = 'www.youtube.com/watch?v='.$video_id;
-            $video_urls[] = $video_url;
+            $search_key = $track['track']['name'].' '.$track['track']['artists'][0]['name'];
+            // $params = [
+            //     'q'             => $track['track']['name'].' '.$track['track']['artists'][0]['name'],
+            //     'type'          => 'video',
+            //     'maxResults'    => 1
+            // ];
+            // $results = Youtube::searchAdvanced($params);
+            // $video_id = $results[0]->id->videoId;
+            // $video_url = 'www.youtube.com/watch?v='.$video_id;
+            // $video_urls[] = $video_url;
+
+            $process = new Process([
+                'python3',
+                public_path('py/search.py'),
+                $search_key,
+            ]);
+            $process->run();
+            
+            $output = json_decode($process->getOutput(), true);
+            $suffix = $output['videos'][0]['url_suffix'];
+            $url = 'www.youtube.com'.$suffix;
+
+            $video_urls[] = $url;
         }
         ddd($video_urls);
         return view('playlist', compact('playlist'));

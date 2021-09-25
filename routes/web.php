@@ -21,6 +21,7 @@ Route::get('/song/{search_key}', [App\Http\Controllers\SpotController::class, 'd
 Route::get('/playlist', [App\Http\Controllers\SpotController::class, 'playlistHome'])->name('playlists');
 Route::post('/playlist', [App\Http\Controllers\SpotController::class, 'playlistSearch']);
 Route::get('/playlist/{link}', [App\Http\Controllers\SpotController::class, 'playlistDownload']);
+Route::get('/playlistList/{link}', [App\Http\Controllers\SpotController::class, 'playlistList']);
 
 // Route::get('/queue', function() {
 //     dispatch(function() {
